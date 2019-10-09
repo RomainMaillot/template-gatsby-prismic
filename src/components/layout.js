@@ -8,6 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import PageTransition from 'gatsby-plugin-page-transitions'
 
 import Header from "./header"
 import "./layout.css"
@@ -34,7 +35,20 @@ const Layout = ({ children }) => {
           paddingTop: 0,
         }}
       >
-        <main>{children}</main>
+        <PageTransition
+          defaultStyle={{
+            transition: 'opacity 300ms ease-in-out',
+            opacity: 0,
+          }}
+          transitionStyles={{
+            entering: { opacity: 1 },
+            entered: { opacity: 1 },
+            exiting: { opacity: 1 },
+          }}
+          transitionTime={500}
+        >
+          {children}
+        </PageTransition>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}

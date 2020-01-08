@@ -13,6 +13,12 @@ const Title = styled.h1`
 
 const Article = styled.div`
   background: #A3A3A3;
+  margin-bottom: 5vh;
+`
+
+const ArticleImage = styled.img`
+  width: 100px;
+  height: auto;
 `
 
 const IndexPage = ({ data }) => (
@@ -29,6 +35,7 @@ const IndexPage = ({ data }) => (
         <Article key={`article&${node.id}`} >
           <Title key={`title&${node.id}`} >{node.data.title.text}</Title>
           <p key={`p&${node.id}`}>{node.data.text.text}</p>
+          {node.data.image.url && <ArticleImage src={node.data.image.url} />}
         </Article>
       ))
     }
@@ -54,6 +61,10 @@ export const query = graphql`
         text
         {
           text
+        }
+        image
+        {
+          url
         }
       }
     }

@@ -16,6 +16,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-page-transitions`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -27,6 +28,12 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
+    },
+    {
+      resolve: 'gatsby-source-prismic',
+        options: {
+          repositoryName: 'rmaillot-test-prismic', // (REQUIRED, replace with your own)
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
